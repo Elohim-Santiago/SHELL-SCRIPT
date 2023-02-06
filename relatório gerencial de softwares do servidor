@@ -1,0 +1,27 @@
+Script 2 (relatório gerencial de softwares do servidor): O script deve se chamar
+relatorio_softwares_servidor.sh. A execução do script será realizada de forma automatizada pelo sistema
+em dias/horários pré-determinados. O script deverá criar um relatório em formato CSV contendo, para
+todos os softwares (pacotes) instalados no sistema, o nome do pacote, a versão atualmente instalada, a
+versão disponível no repositório, a sua seção, a sua prioridade, e se é necessário (sim ou não) realizar
+a atualização desse pacote;
+
+# Exemplo de relatório
+Relatório Gerencial de Softwares do Servidor debian-isa
+Data: 10 de Agosto de 2022
+Pacote, Versão atual, Versão repositório, Seção, Prioridade, Necessita atualizar?
+adduser, 3.118, 3.118, admin, important, Não
+anacron, 2.3-28, 2.3-28, admin, optional, Não
+bzip2, 1.0.6-9.1, 1.0.6.9-2 ̃deb10u1, utils, standard, Sim
+openssl, 1.1.1c-1, 1.1.1d-0+deb10u2, utils, optional, Sim
+§ Obs.: Os dados em negrito são obtidos no momento da execução do script
+
+
+# Ações e regras do script relatorio_software_servidor.sh
+§ Sempre ao iniciar o script a lista de pacotes existente no repositório deve ser atualizada
+§ O script deverá ser executado automaticamente nos seguintes horários:
+• Nas segundas, quartas e sextas às 03:45 da manhã
+§ O relatório gerado deve ser compactado e armazenado localmente no seguinte local/padrão:
+• /var/backups/relatorios/<ano>/<mes>/softwares-<data>.tar.gz
+• Ex.: /var/backups/relatórios/2022/08/softwares-20220810.tar.gz
+§ Uma cópia do arquivo deve ser enviada via SSH para um servidor de IP A.B.C.D (outro computador
+qualquer na rede) e ser armazenado no diretório /tmp/backups
